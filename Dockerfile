@@ -3,4 +3,4 @@ RUN apk add --no-cache libc6-compat unzip curl
 WORKDIR /app
 RUN curl -L https://github.com/pocketbase/pocketbase/releases/download/v0.35.0/pocketbase_0.35.0_linux_amd64.zip -o pocketbase.zip && unzip pocketbase.zip && chmod +x pocketbase && rm pocketbase.zip
 COPY pb_data /app/pb_data
-CMD sh -c "./pocketbase superuser upsert bryan.thierry28@gmail.com 1234567890 2>/dev/null || true; ./pocketbase serve --http=0.0.0.0:$PORT --dir=/app/pb_data"
+CMD sh -c "./pocketbase superuser upsert bryan.thierry28@gmail.com 1234567890 2>/dev/null || true; ./pocketbase serve --http=0.0.0.0:$PORT --dir=/app/pb_data --origins="https://portfolio.bryan-thierry.fr,http://localhost:4321,http://127.0.0.1:4321""
